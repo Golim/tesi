@@ -1,0 +1,31 @@
+\chapter{Il problema dei ruoli}
+\label{cha:problema-ruoli}
+Nei seguenti capitoli viene descritto il lavoro svolto durante il tirocinio, dalla raccolta e definizione dei requisiti del sistema da sviluppare, alla sua effettiva implementazione.
+
+Durante la fase di sviluppo dell'implementazione del servizio di Digicando su blockchain si è data priorità allo sviluppo del \emph{core} dell'applicazione. Per questo motivo alcune caratteristiche e funzioni dell'applicazione sono state inizialmente tralasciate per essere sviluppate in futuro. Una delle maggiori limitazioni dell'implementazione è l'impossibilità di gestire un brand ed il contratto principale di Digicando da più indirizzi e la mancanza di un sistema flessibile per la loro aggiunta e rimozione. Si è quindi reso necessario lo sviluppo di un sistema di gestione dei ruoli completamente su blockchain.
+
+La gestione dei ruoli degli utenti nell'implementazione blockchain del servizio di Digicando è stata inizialmente realizzata mediante un sistema di \emph{whitelisting} di indirizzi Ethereum all'interno dei contratti stessi. Questo approccio ha comportato un irrigidimento dell'architettura al momento di eventuali aggiornamenti ed un aumento di complessità dei contratti interessati, costretti a svolgere più compiti non correlati al loro scopo.
+
+\section{Identificazione degli operatori}
+Gli operatori, cioè tutti coloro che sono in grado di eseguire determinate azioni sul sistema, saranno identificati da un servizio di identità, che si occuperà di rilasciare dei certificati non trasferibili. BCerty sarà in possesso del certificato radice, sarà in grado di emettere autorizzazioni per operare sulla piattaforma  a ciascun certificato e ne potrà emettere di nuovi. Sarà possibile incaricare altri certificatori indipendenti, che potranno operare senza la necessità di intervento da parte di bCerty. I brand avranno la possibilità di autocertificarsi. Il certificato radice sarà criptato, protetto da una chiave a firma multipla. La struttura a cascata dei certificati emessi sarà simile a quella del sistema di rilascio di certificati SSL. Ogni certificato conterrà in chiaro le informazioni pubbliche dell'ente ed i permessi attribuiti all'utente, cioè l'elenco di azioni che lo stesso sarà in grado di compiere. Un'azione possibile sarà quella di creare sottocertificati, con al più i permessi del certificato padre. Un certificato è considerato valido solamente se tutti i certificati padre, fino al certificato radice, sono validi; la revoca o la rimozione di un certificato si riperquoterà su tutti i certificati figli \cite{bCerty-whitepaper}.
+
+\section{Requisiti}
+\label{requisiti}
+Si è deciso di sviluppare un nuovo contratto esterno in sostituzione del sistema di whitelisting degli indirizzi. L'approccio migliore individuato è un sistema basato su \emph{claim}, cioè una serie di attributi che gli utenti sono in grado di attribuirsi tra loro, che permettono di conferire loro particolari tipologie di privilegi. Un possibile elenco non completo di ruoli attribuibili agli utenti è:
+\begin{itemize}
+    \item Dipendente di Digicando autorizzato a certificare nuovi brand.
+    \item Produttore di tag per un brand, in grado di emettere nuovi oggetti unici.
+    \item Venditore autorizzato per un determinato prodotto.
+\end{itemize}
+
+\noindent
+I requisiti e le caratteristiche importanti individuati per il sistema insieme all'azienda sono:
+\begin{itemize}
+    \item Il sistema di gestione dei ruoli deve essere sviluppato per lavorare interamente sulla blockchain Ethereum.
+    \item Il sistema deve essere dinamico sulla creazione di nuovi ruoli: i ruoli ammessi e gestiti dal sistema non devono essere limitati ad un insieme fisso e non deve essere necessario sviluppare e distribuire un nuovo contratto ogni volta si renda necessario supportare un nuovo ruolo.
+    \item I ruoli devono poter essere gestiti in maniera gerarchica a cascata: un utente con un ruolo può avere il permesso di emettere dei ruoli a sua volta, che saranno considerati validi finchè il suo ruolo sarà valido.
+    \item Ogni operatore potrà avere differenti privilegi, compreso quello di nominare dei collaboratori con privilegi uguali o inferiori ai suoi.
+    \item Ogni indirizzo deve poter emettere un ruolo ad un qualsiasi altro indirizzo. Il sistema non avrà il compito di controllare l'emissione dei ruoli, ma solo di memorizzarla e gestirla. Il sistema deve inoltre fornire delle funzioni di verifica della validità di singoli ruoli o di catene di ruoli. Dare un significato ed un valore ai ruoli sarà compito delle applicazioni che utilizzeranno il sistema.
+    \item Gli operatori devono poter agire in autonomia, nei limiti delle possibilità a loro attribuite.
+    \item Un utente deve poter ricevere lo stesso ruolo da più garanti.
+\end{itemize}

@@ -1,0 +1,108 @@
+\chapter{La tecnologia Blockchain}
+\label{cha:tecnologia-blockchain}
+La blockchain è una tecnologia relativamente nuova, infatti è stata creata nel 2008. Ha come obiettivo primario il mantenimento di un registro (o libro mastro) immodificabile, al quale è possibile solo aggiungere nuove informazioni.
+
+\section{Definizioni}
+\label{definizioni}
+Per meglio comprendere questo capitolo è opportuno definire i termini più utilizzati:
+\begin{itemize}
+    \item \emph{Sistema distribuito}: un sistema distribuito è un sistema composto da computer indipendenti, connessi utilizzando un \emph{middleware}. I computer che partecipano al sistema condividono le loro risorse e capacità per fornire una rete integrata e coerente agli utenti \cite{distribuito}. Queste macchine hanno uno stato condiviso, operano simultaneamente e possono fallire individualmente senza influire sullo stato della rete \cite{distribuito-medium}.
+    \item \emph{Sistema decentralizzato}: un sistema decentralizzato è un sistema dove non c'è un singolo punto dove vengono prese le decisioni. Ogni nodo prende una decisione sul proprio comportamento singolarmente ed il comportamento risultante del sistema è l'aggregazione dei singoli comportamenti \cite{decentralizzato}.
+    \item \emph{Peer-to-peer}: è un'architettura nella quale ogni computer è sia \emph{client} che \emph{server} verso gli altri partecipanti \cite{p2p}.
+\end{itemize}
+
+\section{Storia}
+L'idea di utilizzare una catena di blocchi protetti crittograficamente viene descritta nel 1991 da Stuart Haber e W. Scott Stornetta, con l'obiettivo di implementare un sistema di \emph{timestamping} di documenti immodificabile. Nel 1992 viene introdotto dagli stessi studiosi l'utilizzo di alberi Merkle per permettere la certificazione di più documenti in un unico blocco. Un albero Merkle è una particolare struttura ad albero che permette una verifica efficiente e sicura di grandi strutture dati \cite{merkle-tree}.
+
+Questo studio è stato utilizzato come base da Satoshi Nakamoto, pseudonimo di una persona o un gruppo di persone, per concettualizzare la prima blockchain nel 2008 attraverso un \emph{paper}. Nakamoto ha migliorato in modo sostanziale il sistema introducendo l'utilizzo dell'algoritmo \emph{Proof of Work} (spiegato nella Sezione \ref{proof-of-work}), che regola l'aggiunta dei blocchi alla catena senza la necessità di una firma di una parte fidata. Negli anni successivi questo progetto è stato implementato da Nakamoto ed utilizzato come componente principale della criptovaluta \emph{Bitcoin} \cite{blockchain}.
+Negli ultimi anni sono nate molte criptovalute basate sulla tecnologia blockchain (descritte nella Sezione \ref{criptovalute}). Oggi è possibile acquistare beni e servizi di vario genere con le criptovalute. Spesso, a causa della loro potenziale anonimità, sono utilizzate nei mercati neri per l'acquisto e lo scambio di beni e servizi illegali.
+
+\section{Blockchain}
+\label{blockchain}
+Una \emph{Blockchain} è un registro crescente di \emph{record}, chiamati blocchi, connessi tra loro utilizzando la crittografia. Questo registro è condiviso da tutte le parti che operano all'interno di una rete distribuita di computer. Ogni blocco contiene un hash crittografico del blocco precedente, un timestamp e dei dati riguardanti delle transazioni. Una blockchain non è modificabile per definizione, in quanto ogni modifica invaliderebbe l'intera struttura.
+
+Una blockchain è composta da:
+\begin{itemize}
+    \item Una \emph{rete peer-to-peer} che connette i partecipanti e propaga le transazioni ed i blocchi di transazioni verificate mediante un protocollo di \emph{gossip} standardizzato.
+    \item Messaggi, sotto forma di \emph{transazioni}, che rappresentano le transizioni dello stato.
+    \item Un insieme di \emph{regole di consenso}, che stabiliscono le caratteristiche di una transazione valida e di una transizione di stato valida.
+    \item Una \emph{macchina a stati} che processa le transazioni in accordo con le regole del consenso.
+    \item Una \emph{catena di blocchi} protetta crittograficamente che funge da diario di tutte le transizioni di stato verificate ed accettate.
+    \item Un \emph{algoritmo di consenso} che decentralizza il controllo della blockchain forzando i partecipanti a cooperare nell'applicazione delle regole di consenso.
+    \item Uno \emph{schema di incentivazione} per proteggere economicamente la macchina a stati in un ambiente aperto.
+    \item Una o più implementazioni software open-source, chiamate \emph{client} \cite{ethereumbook}.
+\end{itemize}
+
+\subsection{Consenso}
+\label{consenso}
+In informatica il consenso si riferisce alla sincronizzazione di uno stato in un sistema distribuito, in modo che tutti i partecipanti siano d'accordo con un unico stato globale. Nell'ambito della tecnologia blockchain, il consenso mira ad ottenere un sistema con regole severe, mantenendo però il controllo decentralizzato senza un governante.
+
+\subsubsection{Proof of Work}
+\label{proof-of-work}
+L'algoritmo \emph{Proof of Work (PoW)} è stato inventato dal creatore della blockchain \emph{Bitcoin} Satoshi Nakamoto, è comunemente chiamato \emph{mining} ed ha come scopo il raggiungimento del consenso e la creazione di nuovi blocchi validi. Coloro che contribuiscono alla sicurezza del sistema mediante questo algoritmo vengono ricompensati con una quantità di valuta. I partecipanti sono incentivati a seguire le regole in quanto, in caso contrario, rischiano di perdere la ricompensa e, dato che il processo necessita di molta energia elettrica, rimetterci economicamente. In pratica, la \emph{prova (proof)} è un dato con delle determinate caratteristiche molto difficile da produrre in termini computazionali, ma molto facile da verificare. Attualmente la blockchain Ethereum è basata su questo approccio \cite{ethereumbook} \cite{pow}.
+
+\subsubsection{Proof of Stake}
+\label{proof-of-stake}
+L'algoritmo \emph{Proof of Stake (PoS)} è un algoritmo di consenso che prevede la presenza di un insieme di validatori. Per diventare un validatore è necessario possedere della valuta e generare una transazione che ne blocca una parte in un deposito. I validatori, a turno, propongono e votano il prossimo blocco valido. Il peso di ogni validatore è proporzionale alla dimensione del suo deposito. Se il blocco su cui un validatore ha puntato viene rifiutato dalla maggior parte dei validatori, il validatore perde il deposito. Se il blocco viene accettato invece, il validatore viene ricompensato proporzionalmente alla dimensione del suo deposito. Utilizzando PoS la punizione è intrinseca alla blockchain, mentre con PoW la punizione è estrinseca, cioè il costo dell'elettricità \cite{ethereumbook}.
+
+\subsection{Utilizzi}
+\label{utilizzi}
+La tecnologia blockchain può essere integrata in diverse aree. La blockchain viene utilizzata principalmente nell'ambito delle criptovalute, dove funge da libro mastro.
+I principali utilizzi di questa tecnologia sono:
+\begin{itemize}
+    \item \emph{Criptovalute}: trattate nel paragrafo seguente.
+    \item \emph{Smart contract}: contratti basati sulla blockchain che possono essere eseguiti ed attuati senza la necessità di un'interazione umana.
+    \item \emph{Catena di fornitura}: la blockchain può essere utilizzata per gestire delle catene di fornitura e delle catene di logistica.
+    \item \emph{Registri pubblici}: la blockchain può essere utilizzata per creare e mantenere dei registri pubblici e trasparenti \cite{blockchain}.
+\end{itemize}
+
+\paragraph{Criptovalute}
+\label{criptovalute}
+Una criptovaluta è una risorsa digitale con un valore utilizzabile come mezzo di scambio e che utilizza la crittografia per proteggere le transazioni finanziarie, la creazione di ulteriori unità ed il loro trasferimento. Al contrario del sistema bancario e delle monete digitali centralizzate, le criptovalute utilizzano un controllo decentralizzato. La criptovaluta più nota è \emph{Bitcoin} \cite{criptovaluta}.
+
+\section{Ethereum}
+\label{ethereum}
+Ethereum è una blockchain con una criptovaluta nativa chiamata \emph{Ether (ETH)} interamente \emph{open-source}. L'Ether è una moneta digitale, la cui fornitura non è controllata da alcun governo o azienda, è decentralizzata e scarsa. Ethereum è programmabile, cioè permette di sviluppare delle applicazioni decentralizzate, chiamate \emph{DApp}, che beneficiano della criptovaluta e della tecnologia blockchain. Ethereum è una macchina a stati deterministica, che consiste di uno stato \emph{singleton} globalmente accessibile e di una macchina virtuale, chiamata \emph{Ethereum Virtual Machine}, che applica modifiche a tale stato. Le transazioni permettono di cambiare lo stato o di far eseguire un contratto. Le transazioni sono messaggi firmati originati da un indirizzo, trasmessi dalla rete e memorizzati nella blockchain \cite{ethereumbook}. In pratica, è un'infrastruttura computazionale globalmente decentralizzata che esegue dei programmi, chiamati \emph{smart contract}. L'utilizzo della blockchain serve a sincronizzare e memorizzare i cambiamenti dello stato del sistema e vincolare i costi delle risorse di esecuzione alla criptovaluta.
+
+Le DApps sono fidate: una volta caricate su Ethereum lavoreranno sempre come programmato; possono controllare risorse digitali e possono essere decentralizzate, cioè non controllate da una singola entità. Per questo motivo la blockchain Ethereum viene spesso chiamata \emph{il computer mondiale}. Il linguaggio di Ethereum è \emph{Turing completo}.
+
+La blockchain Ethereum non è controllata da un'azienda o da un'organizzazione centralizzata, ma è mantenuta e migliorata nel tempo da una community globale di contributori che lavorano al protocollo ed alle applicazioni consumer \cite{ethereum-org}.
+
+\subsection{Smart contracts}
+\label{smart-contracts}
+Uno \emph{smart contract} è un programma immutabile che viene eseguito deterministicamente nel contesto della \emph{Ethereum Virtual Machine (EVM)}, come parte del protocollo di rete Ethereum. Gli smart contract possiedono un indirizzo e sono immutabili e deterministici; immutabili in quanto il codice distribuito sulla blockchain non può essere cambiato e deterministici in quanto l'output dell'esecuzione è sempre lo stesso per chiunque nel contesto della transazione che ne ha scatenato l'esecuzione. Gli smart contracts sono inoltre trasparenti, in quanto i termini e le condizioni dei contratti sono accessibili e visibili a tutti.
+
+Gli smart contract sono generalmente scritti in linguaggio di programmazione ad alto livello e compilati in un \emph{bytecode} a basso livello che esegue nella EVM. Ogni singola operazione in uno \emph{smart contract} ha un costo, misurato in \emph{gas}, che viene pagato dal richiedente in \emph{Ether}. Il gas è un'unità che misura la quantità di sforzo computazionale necessario per eseguire un'operazione.
+
+\subsection{Token}
+\label{token}
+I \emph{token} sono delle forme di astrazione di valore. Un token è un oggetto simile ad una moneta, solitamente emesso da un privato, il cui utilizzo è generalmente ristretto ad uno specifico campo, organizzazione o luogo. Non sono facilmente scambiabili e tipicamente svolgono un'unica funzione.
+
+I token amministrati su blockchain sono delle unità di valore che possono essere possedute e rappresentano risorse, moneta, diritti di accesso. Molti token amministrati su blockchain, al contrario di quelli fisici, servono più scopi a livello globale e possono essere scambiati l'uno per l'altro o in cambio di altre valute sui mercati globali. Si differenziano da quelli fisici anche riguardo alla mancanza di valore intrinseco \cite{token}.
+
+\paragraph{Fungibilità dei token}
+I token sono fungibili quando è possibile sostituirne una singola unità con un'altra senza alcuna differenza nel suo valore o nella sua funzione.
+
+I token non fungibili invece, rappresentano un unico oggetto e per questo motivo non sono interscambiabili. Ogni token non fungibile è associato ad un identificativo unico, come ad esempio un numero seriale.
+
+\subsection{Scalabilità}
+\label{scalabilita}
+Negli ultimi anni gli alti volumi di transazioni hanno affollato la rete e, conseguentemente, fatto aumentare il prezzo del gas. Il protocollo Ethereum permette di processare circa 25 transazioni al secondo, limitando in maniera sostanziale la scalabilità del sistema e la possibilità di raggiungere nuovi utenti \cite{ethereum}.
+I due approcci identificati dagli sviluppatori di Ethereum per porre rimedio a questo problema sono:
+\begin{itemize}
+    \item Scalare Ethereum stessa per renderla capace di aumentare il carico di transazioni processabili nell'unità di tempo.
+    \item Ridurre il carico della blockchain principale spostando la maggior parte delle transazioni su un secondo livello ed utilizzando il livello di base solo per il regolamento delle transazioni. Uno dei progetti più promettenti basati su questo approccio è Plasma \cite{ethereum-scalability}.
+\end{itemize}
+
+\subsubsection{Plasma}
+\label{plasma}
+Plasma è un progetto nato per cercare di risolvere il problema della scalabilità di Ethereum. L'idea alla base di Plasma è quella di gestire le transazioni fuori dalla blockchain principale su delle blockchain figlie, mantenute da individui o gruppi di validatori, avvalendosi della principale solamente per mantenere un determinato livello di sicurezza finale mediante la pubblicazione di una serie di contratti \cite{plasma}.
+
+\subsection{InterPlanetary File System}
+La blockchain non è pensata per memorizzare file, per questo motivo sono nati dei progetti per creare dei sistemi memorizzare e condividere file, anche di grandi dimensioni, in maniera distribuita decentralizzata.
+\emph{InterPlanetary File System (IPFS)} è un protocollo creato per costruire un file-system distribuito e peer-to-peer, su cui è possibile caricare contenuti permanenti, indirizzabili con hash crittografici degli stessi. Può essere utilizzato anche per caricare pagine web accessibili tramite \emph{http} \cite{ipfs}. Ogni nodo della rete memorizza solo i contenuti a cui è interessato, oltre ad alcune informazioni riguardanti l'indicizzazione. Quando si cerca un file, si chiede alla rete di trovare il nodo che lo archivia mediante un hash univoco. IPFS prevede anche la possibilità di indirizzare i file con nomi leggibili dall'uomo mediante un \emph{naming system} decentralizzato, chiamato \emph{IPNS}. IPFS può essere utilizzato in combinazione con la blockchain per memorizzare grandi quantità di dati, cosa infattibile direttamente sulla blockchain, posizionando i collegamenti permanenti in una transazione \cite{ipfs-io}.
+
+\subsection{Swarm}
+Swarm è una piattaforma distribuita e peer-to-peer di archiviazione e di distribuzione di contenuti, basata sulla blockchain di Ethereum. Il servizio offerto è resistente agli attacchi DDoS, ha \emph{zero-downtime}, è tollerante ai guasti e resistente alla censura. I partecipanti alla rete uniscono la loro memoria e le loro risorse di larghezza di banda per fornire questi servizi. Swarm è auto-sostenuto mediante un sistema di incentivi che permette di pagare per ricevere delle risorse \cite{swarm}.
+
+\newpage

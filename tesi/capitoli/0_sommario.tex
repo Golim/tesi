@@ -1,0 +1,16 @@
+\chapter*{Sommario} % senza numerazione
+\label{sommario}
+
+\addcontentsline{toc}{chapter}{Sommario} % da aggiungere comunque all'indice
+
+Questa tesi di laurea tratta dell'esperienza di tirocinio svolta nell'arco di tempo intercorso tra febbraio e giugno del 2019 presso l'azienda Digicando.
+
+La contraffazione causa ogni anno la perdita di svariati miliardi di euro in diversi settori produttivi e di posti di lavoro. La produzione di merci contraffatte è un fenomeno in aumento. La vendita di merci contraffatte, oltre a comportare una perdita economica per i produttori autentici, comporta un danno d'immagine per gli stessi, data la scarsa qualità dei prodotti contraffatti ma ritenuti originali dagli acquirenti. Quando si acquista un prodotto non è infatti generalmente possibile verificarne l'autenticità e la qualità. Le recensioni giocano un ruolo fondamentale nella scelta di un prodotto, ma non è possibile verificarne la genuinità. Per i produttori è inoltre difficile vigilare sulla catena logistica ed sul lavoro dei venditori.
+
+L'azienda Digicando offre un servizio che mira a risolvere i problemi sopraelencati. Attualmente il sistema è sviluppato con un'architettura client-server centralizzata, ma l'azienda ha avviato lo sviluppo del suo servizio basato sulle tecnologie della blockchain Ethereum. L'obiettivo di questa transizione è fornire un servizio trasparente che mantenga una cronologia immodificabile dei trasferimenti di un prodotto nella catena di distribuzione, aperto al controllo di chiunque.
+
+L'implementazione su blockchain del servizio di Digicando, pur essendo in uno stato avanzato dello sviluppo, risulta limitato da alcune mancanze, prima fra tutte l'impossibilità di gestire le azioni riservate a Digicando o ad un produttore da più indirizzi Ethereum ed i permessi ad essi associati. Si è quindi reso necessario lo sviluppo di un sistema di gestione dei ruoli e dei permessi orientato agli indirizzi.
+
+Il sistema di gestione dei ruoli è stato sviluppato nel linguaggio di programmazione Solidity, proprio della blockchain Ethereum, e comprende due contratti. Il primo contratto funge da registro ed è destinato alla semplice memorizzazione dei ruoli associati a dei determinati indirizzi. Il secondo contratto fornisce una funzione che permette di verificare la validità di strutture gerarchiche complesse.
+
+Il sistema sviluppato soddisfa i requisiti definiti dall'azienda ed una volta integrato con l'implementazione presente ha permesso di risolvere il problema descritto precedentemente. I contratti di Digicando e dei produttori sono ora gestibili da più indirizzi ed è possibile rimuoverne o aggiungerne altri.
